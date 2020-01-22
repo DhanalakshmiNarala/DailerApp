@@ -1,4 +1,4 @@
-class DailerApp {
+class DialerApp {
     constructor() {
         this.contactsList = {}
         this.searchDict = {}
@@ -25,30 +25,35 @@ class DailerApp {
         let code = ""
         name = name.toLowerCase()
         for(let i=0; i<name.length; i++) {
-            code += keypad[name]
+            code += keypad[name[i]]
         }
         return code
     }
 
     search(key) {
-        return this.searchDict[key]
+        let contactName = this.searchDict[key]
+        return contactName ? contactName : "not found"
     }
 }
 
-let app = new DailerApp()
+let app = new DialerApp()
+module.exports = app
 
-app.insertContact("Keanu Reeves", "96857 68789")
-app.insertContact("Brad Pitt", "96877 83421")
-app.insertContact("Trisha", "97432 74880")
-app.insertContact("Vijay Sethupathy", "99490 83597")
+// Input:
 
-// Testing 
-console.log(app.search("53268")) // Keanu Reeves
-console.log(app.search("733837")) // Keanu Reeves
-console.log(app.search("96857")) // Keanu Reeves
-console.log(app.search("68789")) // Keanu Reeves
+// app.insertContact("Keanu Reeves", "96857 68789")
+// app.insertContact("Brad Pitt", "96877 83421")
+// app.insertContact("Trisha", "97432 74880")
+// app.insertContact("Vijay Sethupathy", "99490 83597")
 
-console.log(app.search("874742")) // Trisha
-console.log(app.search("7488")) // Brad Pitt
-console.log(app.search("99490")) // Vijay Sethupathy
-console.log(app.search("74880")) // Trisha
+// Testing:
+
+// console.log(app.search("53268")) // Keanu Reeves
+// console.log(app.search("733837")) // Keanu Reeves
+// console.log(app.search("96857")) // Keanu Reeves
+// console.log(app.search("68789")) // Keanu Reeves
+
+// console.log(app.search("874742")) // Trisha
+// console.log(app.search("7488")) // Brad Pitt
+// console.log(app.search("99490")) // Vijay Sethupathy
+// console.log(app.search("74880")) // Trisha
